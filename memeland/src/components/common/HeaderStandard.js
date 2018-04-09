@@ -13,7 +13,7 @@ const HeaderStandard = () => {
 const styles = {
     headerStyles: {
         backgroundColor: '#1a67e2',
-        flex:1
+        height:85
     }
 }
 

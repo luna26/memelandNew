@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { goHome } from '../../actions';
 import { Text, View, TouchableOpacity, KeyboardAvoidingView } from 'react-native';
 import { ButtonStandard, HeaderStandard, TextField } from '../common/';
 import { FooterColor } from '../../assets/colors';
@@ -8,9 +10,7 @@ class LoginPage extends Component {
         const { view1, view2, mainView, mainInfoLogin, buttonLoginStyle, formStyle, view3 } = styles;
         return (
                 <View style={mainView}>
-                    <View style={view1}>
-                        <HeaderStandard />
-                    </View>
+                    <HeaderStandard />
                     <View style={view2}>
                         <View style={mainInfoLogin}>
                             <View style={formStyle}>
@@ -25,7 +25,7 @@ class LoginPage extends Component {
                                 </TouchableOpacity>
                             </View>
                             <View style={buttonLoginStyle}>
-                                <ButtonStandard textButton={"Login"} onPress={() => console.log("Works")} />
+                                <ButtonStandard textButton={"Login"} onPress={this.props.goHome} />
                             </View>
                         </View>
                     </View>
@@ -45,7 +45,7 @@ const styles = {
         backgroundColor: '#f2f'
     },
     view2: {
-        flex: .70
+        flex: .85
     },
     view3: {
         flex: .15,
@@ -67,4 +67,8 @@ const styles = {
 }
 
 
-export default LoginPage;
+const mapStateToProps = ({ state }) => {
+    return { state };
+};
+
+export default connect(mapStateToProps, { goHome })(LoginPage);
