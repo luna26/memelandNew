@@ -1,0 +1,1 @@
+export const FooterColor = '#b3b3b3';
