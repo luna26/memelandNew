@@ -1,9 +1,12 @@
-import { REGISTER_ONCHAGE_EMAIL, REGISTER_ONCHAGE_USERNAME, REGISTER_ONCHAGE_PASSWORD } from '../actions/types';
+import { REGISTER_ONCHAGE_EMAIL, REGISTER_ONCHAGE_USERNAME, REGISTER_ONCHAGE_PASSWORD, REGISTER_LOADING, REGISTER_SUCCESS } from '../actions/types';
 
 const INITIAL_STATE = {
     registerUsername: '',
     registerEmail: '',
-    registerPassword: ''
+    registerPassword: '',
+    loadingRegister: false,
+    token: '',
+    accessToHome:false
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -16,6 +19,12 @@ export default (state = INITIAL_STATE, action) => {
             break;
         case REGISTER_ONCHAGE_PASSWORD:
             return { ...state, registerPassword: action.payload };
+            break;
+        case REGISTER_LOADING:
+            return { ...state, loadingRegister: action.payload };
+            break;
+        case REGISTER_SUCCESS:
+            return { ...state, token: action.payload, loadingRegister: false, accessToHome:true };
             break;
         default:
             return state;

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { registerOnEmailChange, registerOnUsernameChange, registerOnPasswordChange } from '../../actions';
+import { registerOnEmailChange, registerOnUsernameChange, registerOnPasswordChange, sendRegisterRequest, goHome } from '../../actions';
 import { View } from 'react-native';
-import { ButtonStandard, HeaderStandard, TextField } from '../common/';
+import { ButtonStandard, HeaderStandard, TextField, Loader } from '../common/';
 
 class RegisterPage extends Component {
 
@@ -18,11 +18,28 @@ class RegisterPage extends Component {
         this.props.registerOnPasswordChange(text)
     }
 
+    sendRegisterRequest() {
+        const { registerEmail, registerUsername, registerPassword } = this.props.register;
+        this.props.sendRegisterRequest(registerEmail, registerUsername, registerPassword);
+    }
+
+    showLoader() {
+        if (this.props.register.loadingRegister) {
+            return (
+                <Loader />
+            );
+        }
+    }
+
+    componentDidUpdate() {
+        if(this.props.register.accessToHome) this.props.goHome();
+    }
+
     render() {
-        console.log(this.props);
         const { formContentStyle, buttonContainerStyle, field } = styles;
         return (
             <View style={{ flex: 1 }}>
+                {this.showLoader()}
                 <HeaderStandard />
                 <View style={formContentStyle}>
                     <View>
@@ -49,7 +66,7 @@ class RegisterPage extends Component {
                     </View>
                     <View style={{ flex: 1, justifyContent: "flex-end" }}>
                         <View style={buttonContainerStyle}>
-                            <ButtonStandard textButton={"REGISTER"} />
+                            <ButtonStandard textButton={"REGISTER"} onPress={this.sendRegisterRequest.bind(this)} />
                         </View>
                     </View>
                 </View>
@@ -77,8 +94,14 @@ const styles = {
 }
 
 
-const mapStateToProps = ({register}) => {
+const mapStateToProps = ({ register }) => {
     return { register: register };
 };
 
-export default connect(mapStateToProps, { registerOnEmailChange, registerOnUsernameChange, registerOnPasswordChange })(RegisterPage);
+export default connect(mapStateToProps, {
+    registerOnEmailChange,
+    registerOnUsernameChange,
+    registerOnPasswordChange,
+    sendRegisterRequest,
+    goHome
+})(RegisterPage);
