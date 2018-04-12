@@ -1,11 +1,21 @@
 import { Actions } from 'react-native-router-flux';
-import { ON_CLICK_ACCOUNT, SHOW_SIDEMENU } from './types';
+import { ON_CLICK_ITEM, SHOW_SIDEMENU } from './types';
 
 export const openProfile = () => {
     return dispatch => {
         Actions.profile();
         dispatch({
-            type: ON_CLICK_ACCOUNT,
+            type: ON_CLICK_ITEM,
+            payload: false
+        });
+    };
+}
+
+export const openMemeGenerator = () => {
+    return dispatch => {
+        Actions.memeGenerator();
+        dispatch({
+            type: ON_CLICK_ITEM,
             payload: false
         });
     };

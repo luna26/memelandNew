@@ -18,13 +18,13 @@ const addColorToBtn = (color) => {
         buttonStyles.backgroundColor = color;
         return buttonStyles;
     } else {
+        buttonStyles.backgroundColor = '#2fd81d';
         return buttonStyles;
     }
 }
 
 const styles = {
     buttonStyles: {
-        backgroundColor: '#2fd81d',
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 50,

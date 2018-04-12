@@ -5,6 +5,7 @@ import LoginPage from './components/login/LoginPage'
 import Home from './components/home/Home';
 import RegisterPage from './components/login/RegisterPage';
 import Profile from './components/profile/Profile';
+import MemeGenerator from './components/memeGenerator/MemeGenerator';
 
 const RouterComponent = () => {
     return (
@@ -14,6 +15,7 @@ const RouterComponent = () => {
                 <Scene key="register" component={RegisterPage} hideNavBar={true}  />
                 <Scene key="home" component={Home} hideNavBar={true} initial/>
                 <Scene key="profile" component={Profile} hideNavBar={true} />
+                <Scene key="memeGenerator" component={MemeGenerator} hideNavBar={true} />
             </Stack>
         </Router>
     );

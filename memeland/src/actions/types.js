@@ -14,5 +14,5 @@ export const REGISTER_SUCCESS = 'register_success';
 
 //SIDEMENU
 export const SHOW_SIDEMENU = 'show_sidemenu';
-export const ON_CLICK_ACCOUNT = 'on_click_account';
+export const ON_CLICK_ITEM = 'on_click_item';
 
