@@ -7,7 +7,6 @@ import { HeaderStandard, SideMenu } from '../common/';
 class Home extends Component {
     render(){
         const {homeContainer} = styles;
-        console.log('ESTE', this.props);
         return(
             <View style={homeContainer}>
                 {this.showSideMenu()}

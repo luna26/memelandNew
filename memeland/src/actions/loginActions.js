@@ -1,5 +1,6 @@
+import axios from 'axios';
 import { Actions } from 'react-native-router-flux';
-import {ONCHAGE_USERNAME, ONCHAGE_PASSWORD} from './types';
+import { ONCHAGE_USERNAME, ONCHAGE_PASSWORD, LOGIN_LOADING } from './types';
 
 export const goHome = () => {
     return dispatch => {
@@ -25,12 +26,19 @@ export const onPasswordChange = (text) => {
     };
 }
 
-export const checkCredentials = (user, password) =>{
-
-}
-
-export const registerUser = () => {
-
+export const checkCredentials = (username, password) => {
+    return dispatch => {
+        axios.post('http://35.225.86.102/signin', {
+            username,
+            password
+        })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    };
 }
 
 export const openRegister = () => {

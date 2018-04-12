@@ -20,9 +20,9 @@ const labelOrContent = (children, labelText, onPress) => {
         );
     } else {
         return (
-            <TouchableOpacity>
+            <View>
                 {children}
-            </TouchableOpacity>
+            </View>
         );
     }
 }

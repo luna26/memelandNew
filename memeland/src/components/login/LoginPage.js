@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { goHome, onUsernameChange, onPasswordChange, openRegister } from '../../actions';
+import { onUsernameChange, onPasswordChange, openRegister, checkCredentials } from '../../actions';
 import { Text, View, TouchableOpacity, KeyboardAvoidingView } from 'react-native';
-import { ButtonStandard, HeaderStandard, TextField } from '../common/';
+import { ButtonStandard, HeaderStandard, TextField, Loader } from '../common/';
 import { FooterColor } from '../../assets/colors';
 
 class LoginPage extends Component {
@@ -15,10 +15,24 @@ class LoginPage extends Component {
         this.props.onPasswordChange(text)
     }
 
+    sendLogin() {
+        const {username, password} = this.props.login;
+        this.props.checkCredentials(username, password);
+    }
+
+    showLoader() {
+        if (this.props.login.loadingLogin) {
+            return (
+                <Loader />
+            );
+        }
+    }
+
     render() {
         const { view1, view2, mainView, mainInfoLogin, buttonLoginStyle, formStyle, view3 } = styles;
         return (
             <View style={mainView}>
+                {this.showLoader()}
                 <HeaderStandard showHamburger={false} />
                 <View style={view2}>
                     <View style={mainInfoLogin}>
@@ -42,7 +56,7 @@ class LoginPage extends Component {
                             </TouchableOpacity>
                         </View>
                         <View style={buttonLoginStyle}>
-                            <ButtonStandard textButton={"Login"} onPress={this.props.goHome} />
+                            <ButtonStandard textButton={"Login"} onPress={this.sendLogin.bind(this)} />
                         </View>
                     </View>
                 </View>
@@ -82,8 +96,12 @@ const styles = {
 
 
 const mapStateToProps = ({ login }) => {
-    console.log(login);
     return { login: login };
 };
 
-export default connect(mapStateToProps, { goHome, onUsernameChange, onPasswordChange, openRegister })(LoginPage);
+export default connect(mapStateToProps, {
+    onUsernameChange,
+    onPasswordChange,
+    openRegister,
+    checkCredentials
+})(LoginPage);
