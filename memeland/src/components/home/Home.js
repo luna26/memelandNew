@@ -1,25 +1,27 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { openSideMenu, closeSideMenu } from '../../actions';
-import {View, Text, Image, Dimensions} from 'react-native';
-import { HeaderStandard, SideMenu } from '../common/';
+import { View, Text, Image, Dimensions } from 'react-native';
+import { HeaderStandard } from '../common/';
+import SideMenu from '../sideMenu/SideMenu';
 
 class Home extends Component {
-    render(){
-        const {homeContainer} = styles;
-        return(
+    render() {
+        console.log(this.props);
+        const { homeContainer } = styles;
+        return (
             <View style={homeContainer}>
                 {this.showSideMenu()}
-                <HeaderStandard showHamburger={true} onPressHamburger={this.props.openSideMenu}/>
+                <HeaderStandard showHamburger={true} onPressHamburger={this.props.openSideMenu} />
                 <View>
-                    <Image style={{width: Dimensions.get('window').width}} source={require('../../assets/memes/meme1.jpg')}/>
+                    <Image style={{ width: Dimensions.get('window').width }} source={require('../../assets/memes/meme1.jpg')} />
                 </View>
             </View>
         );
     }
 
-    showSideMenu(){
-        if(this.props.home.showSideMenu){
+    showSideMenu() {
+        if(this.props.sideMenu.showSideMenu){
             return(
                 <SideMenu onPressClose={this.props.closeSideMenu}/>
             );
@@ -28,13 +30,16 @@ class Home extends Component {
 }
 
 const styles = {
-    homeContainer:{
-        flex:1
+    homeContainer: {
+        flex: 1
     }
 }
 
-const mapStateToProps = ({home}) => {
-    return { home:home };
+const mapStateToProps = ({ home, sideMenu }) => {
+    return {
+        home: home,
+        sideMenu : sideMenu
+    };
 };
 
 export default connect(mapStateToProps, { openSideMenu, closeSideMenu })(Home);

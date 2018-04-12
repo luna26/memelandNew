@@ -43,4 +43,4 @@ const styles = {
     }
 }
 
-export { ContainerItem };
+export {ContainerItem};

@@ -5,7 +5,7 @@ const HeaderSideMenu = ({accountNameLabel, pointsLabel}) => {
     const {sideMenuHeaderStyle, textContainerStyle, textStyle1, textStyle2, styleImage} = styles;
     return(
         <View style={sideMenuHeaderStyle}>
-            <Image style={styleImage} source={require('../../../assets/icons/iconMemeDark.png')}/>
+            <Image style={styleImage} source={require('../../assets/icons/iconMemeDark.png')}/>
             <View style={textContainerStyle}>
                 <Text style={textStyle1}>{accountNameLabel}</Text>
                 <Text style={textStyle2}>{pointsLabel}</Text>

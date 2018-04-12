@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HeaderStandard, SideMenu, TextField, MiniButton, ButtonStandard } from '../common/';
+import { HeaderStandard, TextField, MiniButton, ButtonStandard } from '../common/';
 import { ProfileImage } from './ProfileImage';
 import { Text, View, ScrollView } from 'react-native';
 

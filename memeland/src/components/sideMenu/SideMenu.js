@@ -1,9 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { openProfile } from '../../actions';
 import { View, Text } from 'react-native';
 import { HeaderSideMenu } from './HeaderSideMenu';
 import { ContainerItem } from './ContainerItem';
 
-const SideMenu = ({onPressClose}) => {
+const SideMenu = ({openProfile, onPressClose}) => {
     const { sideMenuStyle, containerMenuStyle } = styles;
     return (
         <View style={sideMenuStyle}>
@@ -13,8 +15,8 @@ const SideMenu = ({onPressClose}) => {
                 </ContainerItem>
                 <ContainerItem labelText={'MEME GENERATOR'}/>
                 <ContainerItem labelText={'INVITE A FRIEND'}/>
-                <ContainerItem labelText={'ACCOUNT'}/>
-                <ContainerItem labelText={'CERRAR'} onPress={onPressClose}/>
+                <ContainerItem labelText={'ACCOUNT'} onPress={openProfile}/>
+                <ContainerItem labelText={'CLOSE'} onPress={onPressClose}/>
             </View>
         </View>
     );
@@ -36,4 +38,10 @@ const styles = {
         marginRight: 20
     }
 }
-export { SideMenu };
+
+const mapStateToProps = (stateSideMenu) => {
+    return { stateSideMenu:stateSideMenu };
+};
+
+
+export default connect(mapStateToProps, {openProfile})(SideMenu);
