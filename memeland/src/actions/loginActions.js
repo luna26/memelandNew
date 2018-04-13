@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Actions } from 'react-native-router-flux';
-import { ONCHAGE_USERNAME, ONCHAGE_PASSWORD, LOGIN_LOADING } from './types';
+import { ONCHAGE_USERNAME, ONCHAGE_PASSWORD, ON_LOADER_SHOW } from './types';
 
 export const goHome = () => {
     return dispatch => {
@@ -28,6 +28,10 @@ export const onPasswordChange = (text) => {
 
 export const checkCredentials = (username, password) => {
     return dispatch => {
+        dispatch({
+            type: ON_LOADER_SHOW,
+            payload: true
+        });
         axios.post('http://35.225.86.102/signin', {
             username,
             password

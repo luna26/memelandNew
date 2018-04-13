@@ -6,7 +6,6 @@ import { HeaderSideMenu } from './HeaderSideMenu';
 import { ContainerItem } from './ContainerItem';
 
 const SideMenu = (props) => {
-    console.log(props);
     return (
             showSideMenu(props)
     );
@@ -29,7 +28,7 @@ const showSideMenu = ({ openProfile, closeSideMenu, openMemeGenerator, stateSide
             </View>
         );
     }else{
-        return(<View></View>);
+        return(null);
     }
 }
 

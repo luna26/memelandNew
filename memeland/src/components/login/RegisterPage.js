@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { registerOnEmailChange, registerOnUsernameChange, registerOnPasswordChange, sendRegisterRequest, goHome } from '../../actions';
 import { View } from 'react-native';
-import { ButtonStandard, HeaderStandard, TextField, Loader } from '../common/';
+import { ButtonStandard, HeaderStandard, TextField } from '../common/';
+import Loader from '../loader/Loader';
 
 class RegisterPage extends Component {
 
@@ -23,14 +24,6 @@ class RegisterPage extends Component {
         this.props.sendRegisterRequest(registerEmail, registerUsername, registerPassword);
     }
 
-    showLoader() {
-        if (this.props.register.loadingRegister) {
-            return (
-                <Loader />
-            );
-        }
-    }
-
     componentDidUpdate() {
         if(this.props.register.accessToHome) this.props.goHome();
     }
@@ -39,7 +32,7 @@ class RegisterPage extends Component {
         const { formContentStyle, buttonContainerStyle, field } = styles;
         return (
             <View style={{ flex: 1 }}>
-                {this.showLoader()}
+                <Loader />
                 <HeaderStandard />
                 <View style={formContentStyle}>
                     <View>

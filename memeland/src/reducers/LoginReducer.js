@@ -1,4 +1,4 @@
-import { ONCHAGE_USERNAME, ONCHAGE_PASSWORD, LOGIN_LOADING } from '../actions/types';
+import { ONCHAGE_USERNAME, ONCHAGE_PASSWORD } from '../actions/types';
 
 const INITIAL_STATE = {
   username: '',
@@ -13,9 +13,6 @@ export default (state = INITIAL_STATE, action) => {
       break;
     case ONCHAGE_PASSWORD:
       return { ...state, password: action.payload };
-      break;
-    case LOGIN_LOADING:
-      return { ...state, loadingLogin: action.payload };
       break;
     default:
       return state;

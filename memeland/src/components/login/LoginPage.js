@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { onUsernameChange, onPasswordChange, openRegister, checkCredentials } from '../../actions';
 import { Text, View, TouchableOpacity, KeyboardAvoidingView } from 'react-native';
-import { ButtonStandard, HeaderStandard, TextField, Loader } from '../common/';
+import { ButtonStandard, HeaderStandard, TextField } from '../common/';
+import Loader from '../loader/Loader';
 import { FooterColor } from '../../assets/colors';
 
 class LoginPage extends Component {
@@ -20,19 +21,11 @@ class LoginPage extends Component {
         this.props.checkCredentials(username, password);
     }
 
-    showLoader() {
-        if (this.props.login.loadingLogin) {
-            return (
-                <Loader />
-            );
-        }
-    }
-
     render() {
         const { view1, view2, mainView, mainInfoLogin, buttonLoginStyle, formStyle, view3 } = styles;
         return (
             <View style={mainView}>
-                {this.showLoader()}
+                <Loader />
                 <HeaderStandard showHamburger={false} />
                 <View style={view2}>
                     <View style={mainInfoLogin}>

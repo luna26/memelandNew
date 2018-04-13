@@ -16,3 +16,9 @@ export const REGISTER_SUCCESS = 'register_success';
 export const SHOW_SIDEMENU = 'show_sidemenu';
 export const ON_CLICK_ITEM = 'on_click_item';
 
+//MEME GENERATOR
+export const ON_CLICK_POPULAR = 'on_click_popular';
+export const ON_LOADER_POPULAR = 'on_loader_popular';
+
+//LOADER
+export const ON_LOADER_SHOW = 'on_loader';

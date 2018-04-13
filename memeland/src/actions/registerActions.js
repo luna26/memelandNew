@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { REGISTER_ONCHAGE_EMAIL, REGISTER_ONCHAGE_USERNAME, REGISTER_ONCHAGE_PASSWORD, REGISTER_LOADING, REGISTER_SUCCESS } from './types';
+import { REGISTER_ONCHAGE_EMAIL, REGISTER_ONCHAGE_USERNAME, REGISTER_ONCHAGE_PASSWORD, ON_LOADER_SHOW, REGISTER_SUCCESS } from './types';
 
 export const registerOnEmailChange = (text) => {
     return dispatch => {
@@ -31,7 +31,7 @@ export const registerOnPasswordChange = (text) => {
 export const sendRegisterRequest = (email, username, password) => {
     return dispatch => {
         dispatch({
-            type: REGISTER_LOADING,
+            type: ON_LOADER_SHOW,
             payload: true
         });
         axios.post('http://35.225.86.102/signup', {
