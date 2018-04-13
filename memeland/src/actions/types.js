@@ -18,7 +18,7 @@ export const ON_CLICK_ITEM = 'on_click_item';
 
 //MEME GENERATOR
 export const ON_CLICK_POPULAR = 'on_click_popular';
-export const ON_LOADER_POPULAR = 'on_loader_popular';
+export const LOAD_POPULAR_ASSETS= 'laod_popular_assets';
 
 //LOADER
 export const ON_LOADER_SHOW = 'on_loader';

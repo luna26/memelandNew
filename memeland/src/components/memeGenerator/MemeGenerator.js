@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { View, Text, Image } from 'react-native';
 import { ButtonStandard, HeaderStandard } from '../common/';
+import {onClickPopular} from '../../actions';
+import Loader from '../loader/Loader';
 
 class MemeGenerator extends Component {
     render() {
@@ -12,13 +15,14 @@ class MemeGenerator extends Component {
 
         return (
             <View style={mainContainerStyle}>
+                <Loader />
                 <HeaderStandard showHamburger={false} />
                 <View style={headerIndicator}>
                     <Image style={indicatorImage} source={require('../../assets/stepsIndicator/step1.png')} />
                 </View>
                 <View style={buttonsContainer}>
                     <View style={buttonSizeStyle}>
-                        <ButtonStandard textButton={"POPULAR"} />
+                        <ButtonStandard textButton={"POPULAR"} onPress={this.props.onClickPopular}/>
                     </View>
                     <View style={buttonSizeStyle}>
                         <ButtonStandard textButton={"MY ASSETS"} />
@@ -58,4 +62,8 @@ const styles = {
     }
 }
 
-export default MemeGenerator;
+const mapStateToProps = ({ memeGenerator }) => {
+    return { memeGenerator: memeGenerator };
+};
+
+export default connect(mapStateToProps, {onClickPopular})(MemeGenerator);
