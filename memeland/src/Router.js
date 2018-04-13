@@ -7,6 +7,7 @@ import RegisterPage from './components/login/RegisterPage';
 import Profile from './components/profile/Profile';
 import MemeGenerator from './components/memeGenerator/MemeGenerator';
 import Popular from './components/memeGenerator/popular/Popular';
+import Caption from './components/memeGenerator/captions/Caption';
 
 const RouterComponent = () => {
     return (
@@ -16,8 +17,9 @@ const RouterComponent = () => {
                 <Scene key="register" component={RegisterPage} hideNavBar={true}  />
                 <Scene key="home" component={Home} hideNavBar={true} />
                 <Scene key="profile" component={Profile} hideNavBar={true} />
-                <Scene key="memeGenerator" component={MemeGenerator} hideNavBar={true} initial/>
-                <Scene key="popularAssets" component={Popular} hideNavBar={true} />
+                <Scene key="memeGenerator" component={MemeGenerator} hideNavBar={true} />
+                <Scene key="popularAssets" component={Popular} hideNavBar={true} initial/>
+                <Scene key="caption" component={Caption} hideNavBar={true} />
             </Stack>
         </Router>
     );
