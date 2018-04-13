@@ -1,25 +1,36 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { openProfile, openMemeGenerator } from '../../actions';
+import { openProfile, openMemeGenerator, closeSideMenu } from '../../actions';
 import { View, Text } from 'react-native';
 import { HeaderSideMenu } from './HeaderSideMenu';
 import { ContainerItem } from './ContainerItem';
 
-const SideMenu = ({openProfile, onPressClose, openMemeGenerator}) => {
-    const { sideMenuStyle, containerMenuStyle } = styles;
+const SideMenu = (props) => {
+    console.log(props);
     return (
-        <View style={sideMenuStyle}>
-            <View style={containerMenuStyle}>
-                <ContainerItem>
-                    <HeaderSideMenu accountNameLabel={'Account Name'} pointsLabel={'300 points'} />
-                </ContainerItem>
-                <ContainerItem labelText={'MEME GENERATOR'} onPress={openMemeGenerator}/>
-                <ContainerItem labelText={'INVITE A FRIEND'}/>
-                <ContainerItem labelText={'ACCOUNT'} onPress={openProfile}/>
-                <ContainerItem labelText={'CLOSE'} onPress={onPressClose}/>
-            </View>
-        </View>
+            showSideMenu(props)
     );
+}
+
+const showSideMenu = ({ openProfile, closeSideMenu, openMemeGenerator, stateSideMenu}) => {
+    const { sideMenuStyle, containerMenuStyle } = styles;
+    if (stateSideMenu.sideMenu.showSideMenu) {
+        return (
+            <View style={sideMenuStyle}>
+                <View style={containerMenuStyle}>
+                    <ContainerItem>
+                        <HeaderSideMenu accountNameLabel={'Account Name'} pointsLabel={'300 points'} />
+                    </ContainerItem>
+                    <ContainerItem labelText={'MEME GENERATOR'} onPress={openMemeGenerator} />
+                    <ContainerItem labelText={'INVITE A FRIEND'} />
+                    <ContainerItem labelText={'ACCOUNT'} onPress={openProfile} />
+                    <ContainerItem labelText={'CLOSE'} onPress={closeSideMenu} />
+                </View>
+            </View>
+        );
+    }else{
+        return(<View></View>);
+    }
 }
 
 const styles = {
@@ -40,8 +51,8 @@ const styles = {
 }
 
 const mapStateToProps = (stateSideMenu) => {
-    return { stateSideMenu:stateSideMenu };
+    return { stateSideMenu: stateSideMenu };
 };
 
 
-export default connect(mapStateToProps, {openProfile, openMemeGenerator})(SideMenu);
+export default connect(mapStateToProps, { openProfile, openMemeGenerator, closeSideMenu })(SideMenu);
