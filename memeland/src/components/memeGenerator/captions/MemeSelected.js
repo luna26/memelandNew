@@ -13,6 +13,7 @@ class MemeSelected extends Component {
                         <TextInput style={styleFont}
                         placeholder='Enter Text'
                         placeholderTextColor='white'
+                        underlineColorAndroid='rgba(0,0,0,0)'
                         multiline 
                         />
                     </View>
@@ -20,6 +21,7 @@ class MemeSelected extends Component {
                         <TextInput style={styleFont}
                         placeholder='Enter Text'
                         placeholderTextColor='white'
+                        underlineColorAndroid='rgba(0,0,0,0)'
                         multiline 
                         />
                     </View>
