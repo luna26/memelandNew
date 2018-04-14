@@ -13,12 +13,14 @@ class MemeSelected extends Component {
                         <TextInput style={styleFont}
                         placeholder='Enter Text'
                         placeholderTextColor='white'
+                        multiline 
                         />
                     </View>
                     <View style={textInputStyle2}>
                         <TextInput style={styleFont}
                         placeholder='Enter Text'
                         placeholderTextColor='white'
+                        multiline 
                         />
                     </View>
                 </View>
@@ -57,7 +59,7 @@ const styles = {
         position:'absolute',
         left:10,
         right:10,
-        top:20
+        top:10
     },
     styleFont:{
         fontSize:40,
@@ -68,7 +70,7 @@ const styles = {
         position:'absolute',
         left:10,
         right:10,
-        bottom:15
+        bottom:10
     }
 }
 

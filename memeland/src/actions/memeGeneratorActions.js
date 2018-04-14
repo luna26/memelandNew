@@ -16,6 +16,10 @@ export const onClickPopular = () => {
                 type: LOAD_POPULAR_ASSETS,
                 payload: memePopular
             });
+            dispatch({
+                type: ON_LOADER_SHOW,
+                payload: false
+            });
             Actions.popularAssets();
         },2000);
     };

@@ -13,12 +13,12 @@ const RouterComponent = () => {
     return (
         <Router >
             <Stack key='root'>
-                <Scene key="loginPage" component={LoginPage} hideNavBar={true}/>
+                <Scene key="loginPage" component={LoginPage} hideNavBar={true} initial/>
                 <Scene key="register" component={RegisterPage} hideNavBar={true}  />
-                <Scene key="home" component={Home} hideNavBar={true} />
+                <Scene key="home" component={Home} hideNavBar={true} initial/>
                 <Scene key="profile" component={Profile} hideNavBar={true} />
                 <Scene key="memeGenerator" component={MemeGenerator} hideNavBar={true} />
-                <Scene key="popularAssets" component={Popular} hideNavBar={true} initial/>
+                <Scene key="popularAssets" component={Popular} hideNavBar={true} />
                 <Scene key="caption" component={Caption} hideNavBar={true} />
             </Stack>
         </Router>
