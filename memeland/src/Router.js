@@ -18,7 +18,7 @@ const RouterComponent = () => {
                 <Scene key="home" component={Home} hideNavBar={true} initial/>
                 <Scene key="profile" component={Profile} hideNavBar={true} />
                 <Scene key="memeGenerator" component={MemeGenerator} hideNavBar={true} />
-                <Scene key="popularAssets" component={Popular} hideNavBar={true} />
+                <Scene key="popularAssets" component={Popular} hideNavBar={true} initial/>
                 <Scene key="caption" component={Caption} hideNavBar={true} />
             </Stack>
         </Router>
